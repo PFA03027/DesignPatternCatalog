@@ -1,6 +1,7 @@
 SUBDIRS += CreationPattern01_AbstractFactory/cpp_src
 SUBDIRS += CreationPattern01_AbstractFactory/rust_src
 SUBDIRS += CreationPattern01_AbstractFactory_Practical/cpp_src
+SUBDIRS += CreationPattern03_FactoryMethod/cpp_src
 
 SUBDIRS_TARGET_ALL := $(addsuffix .dir_all,$(SUBDIRS))
 SUBDIRS_TARGET_RUN := $(addsuffix .dir_run,$(SUBDIRS))
