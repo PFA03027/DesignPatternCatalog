@@ -13,6 +13,7 @@
 #ifndef CONSTRUCT_CUSTOM_HOME_H_
 #define CONSTRUCT_CUSTOM_HOME_H_
 
+#include    <functional>
 #include    <memory>
 
 /**
@@ -32,12 +33,16 @@ class abstract_house_product {
 /**
  * @brief Factory MethodパターンのCreatorクラス
  * 
- * DoMakeHouse()をサブクラスで定義する事で、make_story()関数で作成される家(Productクラスの派生クラス)の実装が確定する。
+ * Productクラスの派生クラスを生成するFactory Method部分をクロージャで実現する。
+ * この場合、サブクラス化を必要としない。
  */
 class house_constructor {
     public:
-        house_constructor(void)
-        : up_ahp_(nullptr) {}
+        house_constructor(
+            std::function<std::unique_ptr<abstract_house_product>(void)>    functor_do_make_house_arg
+            )
+        : functor_do_make_house_(functor_do_make_house_arg)
+        , up_ahp_(nullptr) {}
         virtual ~house_constructor(void) {}
 
         /**
@@ -47,7 +52,7 @@ class house_constructor {
          * この関数自身は、どんな家が建てられるか知らない(クラスが不明)が、実行する物語を実装している。
          */
         void make_story(void) {
-            up_ahp_ = DoMakeHouse();
+            up_ahp_ = functor_do_make_house_();
 
             up_ahp_->what_i_am();
             up_ahp_->wolf_attacked();
@@ -55,15 +60,8 @@ class house_constructor {
             return;
         }
     
-    protected:
-        /**
-         * @brief Factory Method
-         * 
-         * @return std::unique_ptr<abstract_house_product> 
-         */
-        virtual std::unique_ptr<abstract_house_product> DoMakeHouse(void) = 0;
-
     private:
+        std::function<std::unique_ptr<abstract_house_product>(void)>    functor_do_make_house_;
         std::unique_ptr<abstract_house_product> up_ahp_;
 };
 

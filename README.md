@@ -68,10 +68,28 @@ Windowシステムが用意する部品レベル（ボタンやリストボッ�
 
 では、どれぐらいの粒度が良いでしょうか？
 
-これは、個人的な見解ですが、MVCモデルの、V単位ぐらいの大きな粒度でAbstract Productの具象クラスを定義しても良いぐらいではないかと思います。
+これは、個人的な見解ですが、MVCモデルの、V単位ぐらいの大きな粒度でAbstract Productの具象クラスを定義しても良いぐらいではないかと思います（もちろんその中間ぐらいでもよい）。
 このぐらいのレベルだと具象クラス内の実装の自由度が高く、具象クラスが対象とするシステムに集中して開発できます。
 もちろん、Abstract Factoryパターンで、複数のシステムをサポートしているという設計の理解は必要です。
 とはいえ、依存するシステムの入れ替わりとともに人を入れ替えることも可能になるのではないでしょうか。
 
 
+
+## Classification: Creation
+### Factory Method
+* C++ での実装: CreationPattern03_FactoryMethod/cpp_src
+* C++ での実装(ラムダ式方式): CreationPattern03_FactoryMethod/cpp_src2
+* Rust での実装: CreationPattern03_FactoryMethod/rust_src
+
+これらの実装は、Factory Methodパターンのサンプル実装です。
+
+CreationPattern03_FactoryMethod/cpp_srcは、デザインパターン本でもともと紹介されていた構成をそのまま実装適用したコードです。
+
+一方で、CreationPattern03_FactoryMethod/cpp_src2やCreationPattern03_FactoryMethod/rust_srcは、ラムダ式やクロージャを使用した実装コードです。
+こちらの場合、上記の実装方式で課題になりやすい、Creatorのサブクラス化が不要になります。
+ラムダ式やクロージャの場合、サブクラス化で実現している具象クラスが保持するメンバ変数やデータをキャプチャによって補っている形ですね。
+こちらの実装の方が現代的と思われます。
+
+#### クロージャの型について
+https://qiita.com/terakoya76/items/f9e2b0bda491aff19b6f
 
