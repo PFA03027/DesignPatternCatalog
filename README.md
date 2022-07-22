@@ -48,7 +48,7 @@
 
 意外と、、、重たいですね。
 感覚的には、同時期に複数プラットフォームをサポートしたり、ある程度長い期間（３～４年、あるいはそれ以上）コードを流用して継続的に成長させるソフトの場合は、最初から考慮に入れていても価値があると感じます。
-いかがでしょうか？　意外とそういったソフト、ありませんか？
+いかがでしょうか？　でも意外とそういったソフト、ありませんか？
 
 CreationPattern01_AbstractFactory_Practical は、CreationPattern01_AbstractFactoryに対し、straw_housemaker、wood_housemaker、stone_housemakerがそれぞれ異なるシステムに依存する場合を想定して、仕立て直したものです。
 
@@ -86,10 +86,26 @@ Windowシステムが用意する部品レベル（ボタンやリストボッ�
 CreationPattern03_FactoryMethod/cpp_srcは、デザインパターン本でもともと紹介されていた構成をそのまま実装適用したコードです。
 
 一方で、CreationPattern03_FactoryMethod/cpp_src2やCreationPattern03_FactoryMethod/rust_srcは、ラムダ式やクロージャを使用した実装コードです。
-こちらの場合、上記の実装方式で課題になりやすい、Creatorのサブクラス化が不要になります。
+こちらの場合、デザインパターン本の実装方式で課題になりやすい、Creatorのサブクラス化が不要になります。
 ラムダ式やクロージャの場合、サブクラス化で実現している具象クラスが保持するメンバ変数やデータをキャプチャによって補っている形ですね。
 こちらの実装の方が現代的と思われます。
 
 #### クロージャの型について
 https://qiita.com/terakoya76/items/f9e2b0bda491aff19b6f
+
+## Classification: Structure
+### Adapter
+* C++ での実装(コンポジットタイプ): StructurePattern01_Adapter\cpp_src
+* C++ での実装(多重継承タイプ): StructurePattern01_Adapter\cpp_src2
+* Rust での実装: StructurePattern01_Adapter\rust_src
+
+これらの実装は、Apdaterパターンのサンプル実装で、I/Fを適合させる目的でAdapterパターンを使用したサンプルです。
+
+C++での実装では、コンポジットタイプの実装の形は定石で、Adapteeクラスへのポインタを保持します。
+一方で、Rustの実装では、トレイトを追加実装する形としました。これは、C++では多重継承タイプに相当する実装方式と考えられます。
+
+Adapterパターンの大事なポイントは、既存のクラスには手を加えることなく、I/Fを揃えることが出来る点ですね。
+
+### 補足
+もしAdapteeクラスがFactory系の場合は、実質的にFactory Methodパターンになります。この場合、生成されるオブジェクトにもAdapterを適用する必要があるでしょう。
 
