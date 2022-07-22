@@ -1,7 +1,7 @@
 
 all: three_pigs_makers.exe
 
-run:
+run: all
 	three_pigs_makers.exe
 
 clean:
