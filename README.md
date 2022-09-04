@@ -109,3 +109,19 @@ Adapterパターンの大事なポイントは、既存のクラスには手を�
 ### 補足
 もしAdapteeクラスがFactory系の場合は、実質的にFactory Methodパターンになります。この場合、生成されるオブジェクトにもAdapterを適用する必要があるでしょう。
 
+
+## Classification: Structure
+### Composite
+* C++ での実装(共通的操作を仮想メンバ関数による実装例): StructurePattern03_Composite\cpp_src
+* C++ での実装(共通的操作をVisitorパターンで実装した例): StructurePattern03_Composite\cpp_src2
+* C++ での実装(共通的操作をVisitorパターンとdynamic_castで実装した例): StructurePattern03_Composite\cpp_src3
+* Rust での実装: StructurePattern03_Composite\rust_src
+
+みんな大好き、木構造のCompositeパターンです。
+
+Compositeパターンの悩ましい点は、具象化クラスの個別I/Fに対する共通化の是非ですね。どうしてもトレードオフが発生するところです。
+サンプルコードでは、ベースとなるクラスで派生クラスの個別I/Fの実装を行わずにComposite構造をスキャンできるように、
+Visitorパターンを使ったサンプルとしました。
+
+StructurePattern03_Composite\cpp_src3は、ベースクラスから派生クラスの詳細を分離する
+ような場合（フレームワークや何らかのライブラリの実装等）に適用できる方法の一つと思います。
