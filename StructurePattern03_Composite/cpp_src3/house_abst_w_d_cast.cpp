@@ -10,7 +10,7 @@
  * Compositeパターンによって構成された構造に対し、個々のComponent個別I/Fへのアクセスを分離する目的でVisitorパターンを適用。
  * 
  * VisitorのI/Fは、ダブルディスパッチによる静的なcastではなくdynamic_castを使用して呼び出すべきI/Fを特定する実装としたサンプル。
- * これは、Visitorクラスのベースすクラスが、Componentクラスの派生クラスを知らなくてよい実装となる。
+ * これは、Visitorクラスのベースクラスが、Componentクラスの派生クラスを知らなくてよい実装となる。
  * 代わりに、Visitorの実装を行う派生クラス側でdynamic_castによる動的なディスパッチを行う。
  * 
  * 結果として、Componentクラスの具象化クラスがシンプルとなっていることがわかる。
@@ -73,7 +73,7 @@ private:
 };
 
 /**
- * @brief 天井を表す構造物
+ * @brief 家を表す構造物
  * 
  */
 class house : public house_component {

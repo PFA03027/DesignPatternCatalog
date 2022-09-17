@@ -7,6 +7,7 @@
  * 
  * @copyright Copyright (c) 2022, PFA03027@nifty.com
  * 
+ * 既存クラスに対して、I/F統一化するためのAdapterパターンの適用において、多重継承使用したサンプルです。
  */
 
 #include <cstdlib>

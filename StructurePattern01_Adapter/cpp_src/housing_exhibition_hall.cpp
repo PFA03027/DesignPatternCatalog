@@ -7,6 +7,7 @@
  * 
  * @copyright Copyright (c) 2022, PFA03027@nifty.com
  * 
+ * 各houseメーカークラスは、異なる受付I/Fを持っています。これを統一したI/Fに変換するため、Adapterパターンを適用したサンプルです。
  */
 
 #include <cstdlib>
