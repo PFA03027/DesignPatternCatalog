@@ -9,6 +9,7 @@ SUBDIRS += StructurePattern01_Adapter\cpp_src2
 SUBDIRS += StructurePattern03_Composite\cpp_src
 SUBDIRS += StructurePattern03_Composite\cpp_src2
 SUBDIRS += StructurePattern03_Composite\cpp_src3
+SUBDIRS += StructurePattern04_Decorator\cpp_src
 
 SUBDIRS_TARGET_ALL := $(addsuffix .dir_all,$(SUBDIRS))
 SUBDIRS_TARGET_RUN := $(addsuffix .dir_run,$(SUBDIRS))

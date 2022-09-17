@@ -125,3 +125,14 @@ Visitorパターンを使ったサンプルとしました。
 
 StructurePattern03_Composite\cpp_src3は、ベースクラスから派生クラスの詳細を分離する
 ような場合（フレームワークや何らかのライブラリの実装等）に適用できる方法の一つと思います。
+
+
+## Classification: Structure
+### Decorator
+* C++ での実装: StructurePattern04_Decorator\cpp_src
+* Rust での実装: StructurePattern04_Decorator\rust_src
+
+既存の機能に、新たな責務を追加するパターンですね。
+Adapterパターンは、I/Fを変更することを目的としたパターンですが、Decoratorパターンは、機能、責務の追加を目的としたパターンです。
+その上で、オブジェクトを使う側は、Decoratorの有無を考慮しなくてよい構造です。
+また、Decoratorを複数付加することも可能です。
