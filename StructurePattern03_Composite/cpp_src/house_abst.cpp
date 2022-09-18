@@ -60,7 +60,7 @@ private:
 };
 
 /**
- * @brief 天井を表す構造物
+ * @brief 家を表す構造物
  * 
  */
 class house : public house_component {
