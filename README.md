@@ -116,6 +116,7 @@ Adapterパターンの大事なポイントは、既存のクラスには手を�
 * C++ での実装(共通的操作をVisitorパターンで実装した例): StructurePattern03_Composite\cpp_src2
 * C++ での実装(共通的操作をVisitorパターンとdynamic_castで実装した例): StructurePattern03_Composite\cpp_src3
 * Rust での実装: StructurePattern03_Composite\rust_src
+* Rust での実装(子のインスタンス群のスキャンをIteratorトレイトで対応): StructurePattern03_Composite\rust_src2
 
 みんな大好き、木構造のCompositeパターンです。
 
@@ -126,6 +127,11 @@ Visitorパターンを使ったサンプルとしました。
 StructurePattern03_Composite\cpp_src3は、ベースクラスから派生クラスの詳細を分離する
 ような場合（フレームワークや何らかのライブラリの実装等）に適用できる方法の一つと思います。
 
+StructurePattern03_Composite\rust_srcは、CompositeのI/Fをトレイトで実装した定石的な実装です。
+
+StructurePattern03_Composite\rust_src2は、上記に加えて子のインスタンス群のスキャンをIteratorで実現することで、
+子を保持するコレクションに依存しないようしました。
+この際、コレクションの生存期間をIteratorオブジェクトの生存期間と同じにする必要があり、lifetimeの情報を追加しています。
 
 ## Classification: Structure
 ### Decorator
@@ -136,3 +142,5 @@ StructurePattern03_Composite\cpp_src3は、ベースクラスから派生クラ�
 Adapterパターンは、I/Fを変更することを目的としたパターンですが、Decoratorパターンは、機能、責務の追加を目的としたパターンです。
 その上で、オブジェクトを使う側は、Decoratorの有無を考慮しなくてよい構造です。
 また、Decoratorを複数付加することも可能です。
+
+StructurePattern04_Decorator\rust_srcは、DecoratorのI/Fをトレイトで実装した定石的な実装です。
