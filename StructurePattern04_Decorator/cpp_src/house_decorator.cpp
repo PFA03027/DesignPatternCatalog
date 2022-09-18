@@ -68,6 +68,7 @@ public:
 /**
  * @brief デコレーターのベースクラス
  * 
+ * どんな家でも装飾しちゃうぞ♪というクラスのベースクラス
  */
 class house_decorator : public base_component {
 public:
