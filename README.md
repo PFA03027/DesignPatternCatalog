@@ -144,3 +144,29 @@ Adapterパターンは、I/Fを変更することを目的としたパターン�
 また、Decoratorを複数付加することも可能です。
 
 StructurePattern04_Decorator\rust_srcは、DecoratorのI/Fをトレイトで実装した定石的な実装です。
+
+
+
+## Classification: Behavior
+### Observer
+* C++ での実装: BehaviorPattern07_Observer\cpp_src
+* Rust での実装: BehaviorPattern07_Observer\rust_src
+
+有名なパターンで、1対多の関係を実現するパターンです。
+このパターンの実装を、コールバックで実現したり、メッセージで実現したりする等、実現方法も様々です。
+
+このパターンの注意点は、Updateの無限連鎖です。
+
+具体的には、
+1. subjectクラスがobserverのUpdate()を呼び出す
+1. Observerクラスからsubjectクラスの操作
+1. (1)に戻る。あるいは、さらに別のクラスを経由して(1)に戻る
+という流れです。
+
+observerパターンの実装をライブラリ化して提供する場合、特にこの状況に対策する必要があります。
+
+対策の基本は、Update()の呼び出しに対し、subjectを変更する操作を呼び出さないことです。
+
+また、MVCのパターンでも使用される構成です。
+ちなみにMVCパターンでは、M=subject、V=observerという関係です。
+Observerは複数存在可能ですので、Vを複数持てる構成を実現できます。
