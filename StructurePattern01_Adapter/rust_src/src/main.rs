@@ -1,3 +1,7 @@
+//! Adapter pattern
+//! 
+//! Copyright (c) 2022, PFA03027@nifty.com
+//! 
 
 pub mod reception_desk_adapter;
 pub mod straw_housemaker;

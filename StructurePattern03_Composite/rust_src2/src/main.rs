@@ -1,3 +1,8 @@
+//! Composite pattern
+//! 
+//! Copyright (c) 2022, PFA03027@nifty.com
+//! 
+
 use std::iter::Iterator;
 use std::collections::VecDeque;
 

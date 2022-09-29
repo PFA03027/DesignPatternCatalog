@@ -1,3 +1,7 @@
+//! Decorator pattern
+//! 
+//! Copyright (c) 2022, PFA03027@nifty.com
+//! 
 
 trait HouseComponent {
     //! Decoratorが対象とするトレイト

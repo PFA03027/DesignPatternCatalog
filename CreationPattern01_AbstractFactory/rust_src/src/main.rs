@@ -1,3 +1,7 @@
+//! Abstract Factory pattern
+//! 
+//! Copyright (c) 2022, PFA03027@nifty.com
+//! 
 
 pub mod abstract_factory_housemaker;
 pub mod concrete_factory_straw_housemaker;

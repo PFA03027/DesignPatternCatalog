@@ -1,8 +1,10 @@
-/// このモジュールは、AbstractHousemakerFactoryトレイトのみに依存する。
-/// よって、実際の構造体定義を知る必要はないため、useによる参照を含まない。
-/// 
-/// これにより、具象クラスが変更されても、このモジュールは再利用可能となり、Abstract Factoryパターンの意図が実現されたことととなる。
-/// 
+//! このモジュールは、AbstractHousemakerFactoryトレイトのみに依存する。
+//! よって、実際の構造体定義を知る必要はないため、useによる参照を含まない。
+//! 
+//! これにより、具象クラスが変更されても、このモジュールは再利用可能となり、Abstract Factoryパターンの意図が実現されたことととなる。
+//! 
+//! Copyright (c) 2022, PFA03027@nifty.com
+//! 
 
 use crate::abstract_factory_housemaker::AbstractHousemakerFactory;
 

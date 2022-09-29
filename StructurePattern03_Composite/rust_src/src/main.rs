@@ -1,3 +1,9 @@
+//! Composite pattern
+//! 
+//! Copyright (c) 2022, PFA03027@nifty.com
+//! 
+
+
 trait HouseComponent {
     //! コンポジットパターンを実現するためのI/Fを定義するトレイト
     //! 

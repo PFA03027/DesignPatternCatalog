@@ -1,3 +1,7 @@
+//! Factory Method pattern
+//! 
+//! Copyright (c) 2022, PFA03027@nifty.com
+//! 
 
 pub mod construct_custom_home;
 pub mod straw_housemaker;

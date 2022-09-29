@@ -1,4 +1,7 @@
-//!
+//! Concrete implementation side of Observer pattern
+//! 
+//! Copyright (c) 2022, PFA03027@nifty.com
+//! 
 //! Observerパターンは、SubjectとObserverが相互に参照され、かつ両者とも可変であるという構造上の、本質的な難しさがあります。
 //! そのため、Weak<>による無効オブジェクトの参照回避と、RefCell<>による動的な借用制御が必要になります。
 //! 
