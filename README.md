@@ -151,9 +151,15 @@ StructurePattern04_Decorator\rust_srcは、DecoratorのI/Fをトレイトで実�
 ### Observer
 * C++ での実装: BehaviorPattern07_Observer\cpp_src
 * Rust での実装: BehaviorPattern07_Observer\rust_src
+* Rust での実装(メッセージによる実装): BehaviorPattern07_Observer\rust_src2
 
 有名なパターンで、1対多の関係を実現するパターンです。
+MVCのパターンでも使用される構成です。
+
 このパターンの実装を、コールバックで実現したり、メッセージで実現したりする等、実現方法も様々です。
+
+ちなみにMVCパターンでは、M=subject、V=observerという関係です。
+Observerは複数存在可能ですので、Vを複数持てる構成を実現できます。
 
 このパターンの注意点は、Updateの無限連鎖です。
 
@@ -167,6 +173,11 @@ observerパターンの実装をライブラリ化して提供する場合、特
 
 対策の基本は、Update()の呼び出しに対し、subjectを変更する操作を呼び出さないことです。
 
-また、MVCのパターンでも使用される構成です。
-ちなみにMVCパターンでは、M=subject、V=observerという関係です。
-Observerは複数存在可能ですので、Vを複数持てる構成を実現できます。
+#### Rustでの実装について
+Rustは、共有参照、可変参照についてシビアな言語であるため、Observerパターンのような相互に参照する構造をもつ
+デザインパターンは実装が結構大変です。
+
+BehaviorPattern07_Observer\rust_src2では、Observerパターンの更新通知をチャンネルを使用したメッセージで実装することで、
+直接的な参照をObserverからSubjectに限定し、スレッドを分離することで共有参照、可変参照の課題をRwLockをつかって解決した構成です。
+メッセージを使っているため、ほぼActive Object化してしまいました。う～ん・・・。
+

@@ -15,6 +15,7 @@ SUBDIRS += StructurePattern04_Decorator\cpp_src
 SUBDIRS += StructurePattern04_Decorator\rust_src
 SUBDIRS += BehaviorPattern07_Observer\cpp_src
 SUBDIRS += BehaviorPattern07_Observer\rust_src
+SUBDIRS += BehaviorPattern07_Observer\rust_src2
 
 SUBDIRS_TARGET_ALL := $(addsuffix .dir_all,$(SUBDIRS))
 SUBDIRS_TARGET_RUN := $(addsuffix .dir_run,$(SUBDIRS))
