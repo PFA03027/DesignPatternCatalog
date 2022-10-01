@@ -152,6 +152,7 @@ StructurePattern04_Decorator\rust_srcは、DecoratorのI/Fをトレイトで実�
 * C++ での実装: BehaviorPattern07_Observer\cpp_src
 * Rust での実装: BehaviorPattern07_Observer\rust_src
 * Rust での実装(メッセージによる実装): BehaviorPattern07_Observer\rust_src2
+* Rust での実装(メッセージ + 非同期タスクによるrust_src2の再実装): BehaviorPattern07_Observer\rust_src2
 
 有名なパターンで、1対多の関係を実現するパターンです。
 MVCのパターンでも使用される構成です。
