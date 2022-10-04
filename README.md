@@ -200,11 +200,3 @@ Senderのスレッド間共有を回避するようにしています。
 BehaviorPattern07_Observer\rust_src3は、BehaviorPattern07_Observer\rust_src2を非同期タスクで書き直したものです。
 async-stdで実装していますが、RwLockの非同期タスク対応を使用すためにunstable版で機能実現となっています。
 残念ながら非同期タスクを本格的に使用するには、今一歩足りない感じです。
-
-```mermaid
-    graph TD;
-            A-->B;
-            A-->C;
-            B-->D;
-            C-->D;
-```
