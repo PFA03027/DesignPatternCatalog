@@ -152,7 +152,7 @@ StructurePattern04_Decorator\rust_srcは、DecoratorのI/Fをトレイトで実�
 * C++ での実装: BehaviorPattern07_Observer\cpp_src
 * Rust での実装: BehaviorPattern07_Observer\rust_src
 * Rust での実装(メッセージによる実装): BehaviorPattern07_Observer\rust_src2
-* Rust での実装(メッセージ + 非同期タスクによるrust_src2の再実装): BehaviorPattern07_Observer\rust_src2
+* Rust での実装(メッセージ + 非同期タスクによるrust_src2の再実装): BehaviorPattern07_Observer\rust_src3
 
 有名なパターンで、1対多の関係を実現するパターンです。
 MVCのパターンでも使用される構成です。
@@ -178,7 +178,32 @@ observerパターンの実装をライブラリ化して提供する場合、特
 Rustは、共有参照、可変参照についてシビアな言語であるため、Observerパターンのような相互に参照する構造をもつ
 デザインパターンは実装が結構大変です。
 
+BehaviorPattern07_Observer\rust_srcでは、更新通知はSubjectのset系APIに含んでいません。
+変更操作による可変参照と更新通知後の共有参照で借用の競合が発生するためです。
+そのため、set系APIを使用する側がわざわざ更新通知を行っています。
+
 BehaviorPattern07_Observer\rust_src2では、Observerパターンの更新通知をチャンネルを使用したメッセージで実装することで、
 直接的な参照をObserverからSubjectに限定し、スレッドを分離することで共有参照、可変参照の課題をRwLockをつかって解決した構成です。
 メッセージを使っているため、ほぼActive Object化してしまいました。う～ん・・・。
+また、更新通知は、SubjectAgentというオブジェクト経由で発行しています。
+Senderは、Sendトレイトは実装されていますがSyncトレイトが(意図的に)実装されていないません。
+set系APIは複数のスレッドから呼び出せるため、更新通知をSubjectのset系APIから行う場合、チャンネルのSenderのスレッド間共有が発生します。
+このスレッド間共有によってコンパイルエラーになります。
+これが、コンパイルエラーになる原因で、コードの問題ではなく、ソフト構造要因の為、
+set系APIからSubjectAgentというオブジェクトを経由して更新通知を行うように分離しました。
+また、Subjectのset系APIからSubjectAgentへの通知は、チャンネルではなくMutexとVecDeqを組み合わせた簡単なメッセージキューで実現し、
+Senderのスレッド間共有を回避するようにしています。
 
+というわけで、set系APIからの更新通知を実現するにはやたら手間がかかってしまいました。
+メッセージで能動的に動くオブジェクトで実現することなり、ObaserverパターンというよりはほぼActive Objectパターンとなってしまいました。
+
+BehaviorPattern07_Observer\rust_src3は、BehaviorPattern07_Observer\rust_src2を非同期タスクで書き直したものです。
+async-stdで実装していますが、RwLockの非同期タスク対応を使用すためにunstable版で機能実現となっています。
+残念ながら非同期タスクを本格的に使用するには、今一歩足りない感じです。
+
+```plantuml
+@startuml
+:Hello world;
+:this is section1;
+@enduml
+```

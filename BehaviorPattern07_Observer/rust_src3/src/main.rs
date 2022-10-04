@@ -12,9 +12,9 @@ use std::time;
 use async_std::task;
 use futures::future::join_all;
 
-pub mod observer_pattern_async;
+pub mod observer_pattern_async_task;
 
-use crate::observer_pattern_async::{MsgData, BaseObserver, BaseSubjectNotifier, BaseSubject, SubjectAgent};
+use crate::observer_pattern_async_task::{MsgData, BaseObserver, BaseSubjectNotifier, BaseSubject, SubjectAgent};
 
 // ObserverパターンにおけるSubjectとなる構造体
 struct StoneHouse {

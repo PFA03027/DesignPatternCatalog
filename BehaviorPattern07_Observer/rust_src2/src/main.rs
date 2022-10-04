@@ -10,9 +10,9 @@
 use std::sync::Arc;
 use std::{thread, time};
 
-pub mod observer_pattern_async;
+pub mod observer_pattern_async_thread;
 
-use crate::observer_pattern_async::{MsgData, BaseObserver, BaseSubjectNotifier, BaseSubject, SubjectAgent};
+use crate::observer_pattern_async_thread::{MsgData, BaseObserver, BaseSubjectNotifier, BaseSubject, SubjectAgent};
 
 // ObserverパターンにおけるSubjectとなる構造体
 struct StoneHouse {
