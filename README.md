@@ -184,18 +184,22 @@ BehaviorPattern07_Observer\rust_srcでは、更新通知はSubjectのset系API�
 
 BehaviorPattern07_Observer\rust_src2では、Observerパターンの更新通知をチャンネルを使用したメッセージで実装することで、
 直接的な参照をObserverからSubjectに限定し、スレッドを分離することで共有参照、可変参照の課題をRwLockをつかって解決した構成です。
-メッセージを使っているため、ほぼActive Object化してしまいました。う～ん・・・。
-また、更新通知は、SubjectAgentというオブジェクト経由で発行しています。
-Senderは、Sendトレイトは実装されていますがSyncトレイトが(意図的に)実装されていないません。
-set系APIは複数のスレッドから呼び出せるため、更新通知をSubjectのset系APIから行う場合、チャンネルのSenderのスレッド間共有が発生します。
+
+また、更新通知は、SubjectAgentというオブジェクト経由で発行しています。理由は下記の理由によります。
+
+Senderは、Sendトレイトは実装されていますがSyncトレイトが(意図的に)実装されていないません。  
+一方で、set系APIは複数のスレッドから呼び出せるため、更新通知をSubjectのset系APIから行う場合、チャンネルのSenderのスレッド間共有が発生します。
 このスレッド間共有によってコンパイルエラーになります。
-これが、コンパイルエラーになる原因で、コードの問題ではなく、ソフト構造要因の為、
-set系APIからSubjectAgentというオブジェクトを経由して更新通知を行うように分離しました。
-また、Subjectのset系APIからSubjectAgentへの通知は、チャンネルではなくMutexとVecDeqを組み合わせた簡単なメッセージキューで実現し、
+これは、コードの問題ではなく、ソフト構造要因です。
+
+したがって、set系APIからSubjectAgentというオブジェクトを経由して更新通知を行うように、更新通知の機能をSubjectAgentに分離する構造変更を行いました。  
+その上で、Subjectのset系APIからSubjectAgentへの通知は、チャンネルではなくMutexとVecDeqを組み合わせた簡単なメッセージキューで実現し、
 Senderのスレッド間共有を回避するようにしています。
 
+最終的に、メッセージで能動的に動くオブジェクトで実現することなました。  
+これはもう、ObaserverパターンというよりはほぼActive Objectパターンです。う～ん・・・。
+
 というわけで、set系APIからの更新通知を実現するにはやたら手間がかかってしまいました。
-メッセージで能動的に動くオブジェクトで実現することなり、ObaserverパターンというよりはほぼActive Objectパターンとなってしまいました。
 
 BehaviorPattern07_Observer\rust_src3は、BehaviorPattern07_Observer\rust_src2を非同期タスクで書き直したものです。
 async-stdで実装していますが、RwLockの非同期タスク対応を使用すためにunstable版で機能実現となっています。
@@ -205,9 +209,9 @@ async-stdで実装していますが、RwLockの非同期タスク対応を使�
 cpp_srcのクラス図は下記で、一般的なObserverパターンの構成です。
 
 サンプルコードの全体の流れとしては、
-* main関数からstone_houseクラスのSetState()を用いて状態を変更。
-* SetState()から、Observerへ更新を知らせるためのObserverのupdate()が呼び出される
-* stone_house_observerのupdate()が呼び出され、stone_houseのGetState()を用いて更新後の状態を入手する
+1. main関数からstone_houseクラスのSetState()を用いて状態を変更。
+1. SetState()から、Observerへ更新を知らせるためのObserverのupdate()が呼び出される
+1. stone_house_observerのupdate()が呼び出され、stone_houseのGetState()を用いて更新後の状態を入手する
 
 という流れです。
 
@@ -254,11 +258,11 @@ classDiagram
 一方で、rust_src2、rust_src3は、SubjectAgentという役割を持つクラスを導入した結果、クラス図は下記のような構成です。
 
 また、サンプルコードの流れは、
-* main()関数から、stone_houseクラスのSetState()を用いて状態を変更。
-* SetState()から、BaseSubjectNotifierへ更新通知メッセージをpush。
-* SubjectAgent<T>が、BaseSubjectNotifierへ更新通知メッセージを受信、stone_house_observerへ通知メッセージをチャンネル経由で送信
-* BaseObserver<T>が、更新通知メッセージを受信し、コールバック関数を呼び出す。
-* コールバック関数から、stone_houseクラスのget_state()を用いて更新後の状態を入手する
+1. main()関数から、stone_houseクラスのSetState()を用いて状態を変更。
+1. SetState()から、BaseSubjectNotifierへ更新通知メッセージをpush。
+1. SubjectAgent\<T\>が、BaseSubjectNotifierへ更新通知メッセージを受信、stone_house_observerへ通知メッセージをチャンネル経由で送信
+1. BaseObserver\<T\>が、更新通知メッセージを受信し、コールバック関数を呼び出す。
+1. コールバック関数から、stone_houseクラスのget_state()を用いて更新後の状態を入手する
 
 という流れです。
 
