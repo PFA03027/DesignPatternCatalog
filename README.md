@@ -199,4 +199,128 @@ Senderのスレッド間共有を回避するようにしています。
 
 BehaviorPattern07_Observer\rust_src3は、BehaviorPattern07_Observer\rust_src2を非同期タスクで書き直したものです。
 async-stdで実装していますが、RwLockの非同期タスク対応を使用すためにunstable版で機能実現となっています。
-こういった道具不足もあり、非同期タスクを本格的に使用するには、残念ながら今一歩足りない感じです。(2022/10/1時点)
+こういった道具不足もあり、rustの非同期タスクを本格的に使用するには、残念ながら今一歩足りない感じです。(2022/10/1時点)
+
+#### クラス図視点での比較
+cpp_srcのクラス図は下記で、一般的なObserverパターンの構成です。
+
+サンプルコードの全体の流れとしては、
+* main関数からstone_houseクラスのSetState()を用いて状態を変更。
+* SetState()から、Observerへ更新を知らせるためのObserverのupdate()が呼び出される
+* stone_house_observerのupdate()が呼び出され、stone_houseのGetState()を用いて更新後の状態を入手する
+
+という流れです。
+
+```mermaid
+%% cpp_srcのクラス図
+classDiagram
+    class base_subject {
+        <<Abstract>>
+        -std::vector obsvrs_
+        #notify_update()
+        +subscribe_observer()
+        +unsubscribe_observer() 
+    }
+    class base_observer {
+        <<Abstract>>
+        +update()*
+    }
+    class stone_house {
+        <<Concrete>>
+        -std::string state_
+        +SetState(std::string)
+        +GetState(): std::string
+    }
+    class stone_house_observer {
+        <<Concrete>>
+        +int id_
+        +std::weak_ptr~stone_house~ wp_sh_
+        +update()
+    }
+    class main {
+
+    }
+
+    base_subject <|-- stone_house
+    base_observer <|-- stone_house_observer
+
+    base_subject "1" --> "*" base_observer: by weak ptr
+    stone_house_observer "1" --> "1" stone_house: by weak ptr
+
+    main "1" *-- "1" stone_house: Call SetState()
+    main "1" *-- "*" stone_house_observer
+```
+
+一方で、rust_src2、rust_src3は、SubjectAgentという役割を持つクラスを導入した結果、クラス図は下記のような構成です。
+
+また、サンプルコードの流れは、
+* main()関数から、stone_houseクラスのSetState()を用いて状態を変更。
+* SetState()から、BaseSubjectNotifierへ更新通知メッセージをpush。
+* SubjectAgent<T>が、BaseSubjectNotifierへ更新通知メッセージを受信、stone_house_observerへ通知メッセージをチャンネル経由で送信
+* BaseObserver<T>が、更新通知メッセージを受信し、コールバック関数を呼び出す。
+* コールバック関数から、stone_houseクラスのget_state()を用いて更新後の状態を入手する
+
+という流れです。
+
+```mermaid
+%% rust_src2のクラス図
+classDiagram
+    class SubjectAgent~T~ {
+        -Arc_RwLock~T~ arc_subject_
+        -observers_
+        -Arc~BaseSubjectNotifier~ base_notfier_
+        +subscribe_observer()
+        +unsubscribe_observer() 
+    }
+    class BaseSubjectNotifier {
+        -msg_que_: 排他制御されたメッセージキュー
+        -cv_: メッセージキューへのpushを通知する条件変数
+        +notify_msg()
+        +wait()
+    }
+    class BaseSubject {
+        <<Interface of Subject>>
+        +accept_notifyer()* : SubjectAgentへの通知用メッセージキューを受け取るためのI/F
+        +notify_msg()
+    }
+
+    class BaseObserver~T~ {
+        +callback: メッセージ受信ループ関数で指定されたコールバック関数
+    }
+
+    class stone_house {
+        <<Concrete>>
+        -std::string state_
+        +set_state(std::string)
+        +get_state(): std::string
+    }
+    class stone_house_observer {
+        <<Concrete>>
+        +int id_
+        +std::weak_ptr~stone_house~ wp_sh_
+        +update()
+    }
+    class main {
+    }
+    class thread01 {
+    }
+    class thread02 {
+    }
+
+    BaseSubject <|.. stone_house
+    BaseObserver~T~ <|-- stone_house_observer
+
+    stone_house "1" --> "1" BaseSubjectNotifier: by weak ptr
+    SubjectAgent~T~ "1" *-- "1" BaseSubjectNotifier
+    SubjectAgent~T~ "1" *-- "1" stone_house
+
+    SubjectAgent~T~ "1" --> "*" BaseObserver~T~: by channel
+    
+    stone_house_observer "1" --> "1" stone_house: by weak ptr
+
+    main "1" *-- "1" stone_house: by weak ptr
+    thread01 *-- SubjectAgent~T~
+    thread02 *-- stone_house_observer
+    main "1" --> "1" thread01
+    main "1" --> "*" thread02: 複数のObserver
+```
