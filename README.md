@@ -155,7 +155,7 @@ StructurePattern04_Decorator\rust_srcは、DecoratorのI/Fをトレイトで実�
 * Rust での実装(メッセージ + 非同期タスクによるrust_src2の再実装): BehaviorPattern07_Observer\rust_src3
 
 有名なパターンで、1対多の関係を実現するパターンです。
-MVCのパターンでも使用される構成です。
+また、MVCのパターンでも使用される構成です。
 
 このパターンの実装を、コールバックで実現したり、メッセージで実現したりする等、実現方法も様々です。
 
@@ -328,3 +328,28 @@ classDiagram
     main "1" --> "1" thread01
     main "1" --> "*" thread02: 複数のObserver
 ```
+
+## Classification: Behavior
+### Strategy
+* C++ での実装(Strategyを隠蔽する実装): BehaviorPattern09_Strategy\cpp_src
+* C++ での実装(Strategyを利用者側が提供する実装): BehaviorPattern09_Strategy\cpp_src2
+* C++ での実装(Strategyを利用者側がlambda関数で提供する実装): BehaviorPattern09_Strategy\cpp_src3
+* Rust での実装(Strategyを隠蔽する実装): BehaviorPattern09_Strategy\rust_src
+
+機能を実現するアルゴリズムを動的に切り替えることを目的としたパターンですね。
+機能を実現するアルゴリズムを切り替えるため、アルゴリズムを実行するI/Fが再利用対象となるパターンです。
+
+ConcreteStrategyクラスに状態を持たせないよう、状態に依存する情報はContexクラス側から提供するようにI/Fを設計することが大事です。
+そうすることで、動的なアルゴリズムの切り替えが可能になります。
+
+また、cpp_src2の実装例のように、利用者側がConcreteStrategyを提供する場合、Abstract Factoryパターンとの組み合わせて使う状況も考えられるでしょう。
+
+## Classification: Behavior
+### Template Method
+* C++ での実装: BehaviorPattern10_TemplateMethod\cpp_src
+* Rust での実装: BehaviorPattern10_TemplateMethod\rust_src
+
+アルゴリズムの一部をサブクラス側で定義する構成によって、アルゴリズムを再利用対象とするパターンです。
+再利用する対象が異なっているため、Strategyパターンとは似て非なるパターンです。
+
+
