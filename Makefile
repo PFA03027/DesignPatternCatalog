@@ -13,6 +13,7 @@ SUBDIRS += StructurePattern03_Composite\rust_src
 SUBDIRS += StructurePattern03_Composite\rust_src2
 SUBDIRS += StructurePattern04_Decorator\cpp_src
 SUBDIRS += StructurePattern04_Decorator\rust_src
+SUBDIRS += BehaviorPattern01_ChainOfResponsibility\cpp_src
 SUBDIRS += BehaviorPattern07_Observer\cpp_src
 SUBDIRS += BehaviorPattern07_Observer\rust_src
 SUBDIRS += BehaviorPattern07_Observer\rust_src2

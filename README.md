@@ -145,7 +145,16 @@ Adapterパターンは、I/Fを変更することを目的としたパターン�
 
 StructurePattern04_Decorator\rust_srcは、DecoratorのI/Fをトレイトで実装した定石的な実装です。
 
+## Classification: Behavior
+### Chain of Responsibility
+* C++ での実装: BehaviorPattern01_ChainOfResponsibility\cpp_src
 
+要求を処理する可能性のあるオブジェクトを数珠繋ぎにして、要求を処理するパターンです。
+
+要求を処理する事ができるオブジェクトが複数存在し、また処理するオブジェクトが動的に変化する場合に適用できるパターンですね。
+
+このパターンは、要求を発行する側と、要求を処理する側が１対多のような場合に適用される場合が多いと思います。
+特に、要求を処理する側は自身オブジェクトで要求処理の要否を考えるだけでよいため、オブジェクト間の結合度を低くできます。
 
 ## Classification: Behavior
 ### Observer
