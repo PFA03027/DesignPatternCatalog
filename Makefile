@@ -21,6 +21,7 @@ SUBDIRS += BehaviorPattern07_Observer\cpp_src
 SUBDIRS += BehaviorPattern07_Observer\rust_src
 SUBDIRS += BehaviorPattern07_Observer\rust_src2
 SUBDIRS += BehaviorPattern07_Observer\rust_src3
+SUBDIRS += BehaviorPattern08_State\cpp_src
 SUBDIRS += BehaviorPattern09_Strategy\cpp_src
 SUBDIRS += BehaviorPattern09_Strategy\cpp_src2
 SUBDIRS += BehaviorPattern09_Strategy\cpp_src3

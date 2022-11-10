@@ -354,6 +354,13 @@ ConcreteStrategyクラスに状態を持たせないよう、状態に依存す�
 また、cpp_src2の実装例のように、利用者側がConcreteStrategyを提供する場合、Abstract Factoryパターンとの組み合わせて使う状況も考えられるでしょう。
 
 ## Classification: Behavior
+### State
+* C++ での実装(Stateを隠蔽する実装): BehaviorPattern08_State\cpp_src
+
+状態によって、振る舞いを変更する事ができるStateパターンです。
+
+
+## Classification: Behavior
 ### Template Method
 * C++ での実装: BehaviorPattern10_TemplateMethod\cpp_src
 * Rust での実装: BehaviorPattern10_TemplateMethod\rust_src
