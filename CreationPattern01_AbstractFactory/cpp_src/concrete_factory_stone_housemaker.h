@@ -12,6 +12,7 @@
 #ifndef ABSTRACT_FACTORY_STONE_HOUSEMAKER_H_
 #define ABSTRACT_FACTORY_STONE_HOUSEMAKER_H_
 
+#include    <cstdio>
 #include    <memory>
 
 #include    "abstract_factory_housemaker.h"

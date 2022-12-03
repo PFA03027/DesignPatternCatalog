@@ -9,6 +9,9 @@
  * 
  */
 
+#include    <cstdio>
+#include    <cstdlib>
+
 #include    <memory>
 
 #include    "abstract_factory_housemaker.h"

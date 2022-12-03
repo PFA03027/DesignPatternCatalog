@@ -9,6 +9,8 @@
  * 
  */
 
+#include <cstdlib>
+
 #include "abstract_factory_housemaker.h"
 #include "wolf_attack_story.h"
 

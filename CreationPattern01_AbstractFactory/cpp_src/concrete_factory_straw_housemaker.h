@@ -13,6 +13,9 @@
 #ifndef ABSTRACT_FACTORY_STRAW_HOUSEMAKER_H_
 #define ABSTRACT_FACTORY_STRAW_HOUSEMAKER_H_
 
+#include    <cstdio>
+#include    <cstdlib>
+
 #include    <memory>
 
 #include    "abstract_factory_housemaker.h"

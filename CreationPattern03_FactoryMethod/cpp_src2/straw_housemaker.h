@@ -12,6 +12,9 @@
 #ifndef STRAW_HOUSEMAKER_H_
 #define STRAW_HOUSEMAKER_H_
 
+#include    <cstdio>
+#include    <cstdlib>
+
 #include    <memory>
 
 #include    "construct_custom_home.h"

@@ -12,6 +12,9 @@
 #ifndef STONE_HOUSEMAKER_H_
 #define STONE_HOUSEMAKER_H_
 
+#include    <cstdio>
+#include    <cstdlib>
+
 #include    <memory>
 
 #include    "construct_custom_home.h"

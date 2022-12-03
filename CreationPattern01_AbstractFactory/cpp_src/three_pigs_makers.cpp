@@ -9,6 +9,8 @@
  * 
  */
 
+#include <cstdlib>
+
 #include "concrete_factory_stone_housemaker.h"
 #include "concrete_factory_straw_housemaker.h"
 #include "concrete_factory_wood_housemaker.h"
