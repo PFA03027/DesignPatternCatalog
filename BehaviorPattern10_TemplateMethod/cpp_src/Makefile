@@ -2,7 +2,7 @@
 all: house_builder_template.exe
 
 run: all
-	house_builder_template.exe
+	./house_builder_template.exe
 
 clean:
 	rm -fr house_builder_template.exe

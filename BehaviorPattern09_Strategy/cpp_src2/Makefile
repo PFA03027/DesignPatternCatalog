@@ -2,7 +2,7 @@
 all: house_maker_strategy.exe
 
 run: all
-	house_maker_strategy.exe
+	./house_maker_strategy.exe
 
 clean:
 	rm -fr house_maker_strategy.exe

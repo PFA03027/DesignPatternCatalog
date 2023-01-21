@@ -2,9 +2,9 @@
 all: elder_pig_makers.exe second_pig_makers.exe youngest_pig_makers.exe
 
 run: all
-	elder_pig_makers.exe
-	second_pig_makers.exe
-	youngest_pig_makers.exe
+	./elder_pig_makers.exe
+	./second_pig_makers.exe
+	./youngest_pig_makers.exe
 
 clean:
 	rm -fr elder_pig_makers.exe second_pig_makers.exe youngest_pig_makers.exe

@@ -2,7 +2,7 @@
 all: housing_exhibition_hall.exe
 
 run: all
-	housing_exhibition_hall.exe
+	./housing_exhibition_hall.exe
 
 clean:
 	rm -fr housing_exhibition_hall.exe

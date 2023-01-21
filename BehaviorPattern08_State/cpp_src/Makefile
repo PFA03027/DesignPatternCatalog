@@ -2,7 +2,7 @@
 all: three_pigs_story.exe
 
 run: all
-	three_pigs_story.exe
+	./three_pigs_story.exe
 
 clean:
 	rm -fr three_pigs_story.exe

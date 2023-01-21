@@ -2,7 +2,7 @@
 all: wolf_attack.exe
 
 run: all
-	wolf_attack.exe
+	./wolf_attack.exe
 
 clean:
 	rm -fr wolf_attack.exe
