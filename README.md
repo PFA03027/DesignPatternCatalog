@@ -93,6 +93,25 @@ CreationPattern03_FactoryMethod/cpp_srcは、デザインパターン本でも�
 #### クロージャの型について
 https://qiita.com/terakoya76/items/f9e2b0bda491aff19b6f
 
+
+## Classification: Creation
+### Singleton
+* C++ での実装(基本): CreationPattern05_Singleton/cpp_src
+* C++ での実装(shared_ptrによる実装): CreationPattern05_Singleton/cpp_src2
+* C++ での実装(DLCによる実装): CreationPattern05_Singleton/cpp_srcX
+
+Singletonパターンの今どきの実装です。
+
+Singletonの良い点は、システム上1つしかないリソースへのアクセスを1つのオブジェクトに対応させることが保証できる点です。
+（n個という有限個に制限する場合は、get_instance()の引数でインスタンスを指定する実装で対応できます）
+
+組込みシステムの場合は、ハードリソースは有限個となる場合が多いでしょうから、なかなかに有用だと思います。
+ほかにもグローバル変数とは異なり、アクセス方法を制限できます。そのため、安全な実装を作りやすい点も良い点です。
+また、グローバルにアクセス可能なリソースでありながら、遅延初期化を実現できる点も、隠れたメリットだと思います。
+
+なお、DLCによる実装は、今どき（C++11以降）の実装では使用しないと思います。
+
+
 ## Classification: Structure
 ### Adapter
 * C++ での実装(コンポジットタイプ): StructurePattern01_Adapter\cpp_src
