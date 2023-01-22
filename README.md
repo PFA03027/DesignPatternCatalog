@@ -74,6 +74,16 @@ Windowシステムが用意する部品レベル（ボタンやリストボッ�
 とはいえ、依存するシステムの入れ替わりとともに人を入れ替えることも可能になるのではないでしょうか。
 
 
+## Classification: Creation
+### Builder
+* C++ での実装: CreationPattern02_Builder/cpp_src
+
+Builder Patternは、あまり使用したことがありません。
+パターンの意図としては、オブジェクトの構築I/Fと、実際に構築されるデータを分離し、構築するデータの構造を変更しやすくするデザインパターンです。
+
+例えば、データをシリアライズ化するフォーマットを、特定のバイナリ形式のフォーマットにしたり、あるいはテキストデータのJSON形式にしたりというように、
+可換にする必要がある場合に適用できるデザインパターンです。
+
 
 ## Classification: Creation
 ### Factory Method
@@ -93,6 +103,13 @@ CreationPattern03_FactoryMethod/cpp_srcは、デザインパターン本でも�
 #### クロージャの型について
 https://qiita.com/terakoya76/items/f9e2b0bda491aff19b6f
 
+
+## Classification: Creation
+### Prototype
+* C++ での実装: CreationPattern04_Prototype/cpp_src
+
+Prototypeパターンは使ったことがないので、コメントが難しいです。
+多くのオブジェクトを動的に生成する場合や、ユーザーが定義したプロトタイプオブジェクトを複製する場合に適用しやすいようです。
 
 ## Classification: Creation
 ### Singleton
