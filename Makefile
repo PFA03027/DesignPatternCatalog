@@ -5,6 +5,7 @@ SUBDIRS += CreationPattern02_Builder/cpp_src
 SUBDIRS += CreationPattern03_FactoryMethod/cpp_src
 SUBDIRS += CreationPattern03_FactoryMethod/cpp_src2
 SUBDIRS += CreationPattern03_FactoryMethod/rust_src
+SUBDIRS += CreationPattern04_Prototype/cpp_src
 SUBDIRS += CreationPattern05_Singleton/cpp_src
 SUBDIRS += CreationPattern05_Singleton/cpp_src2
 SUBDIRS += CreationPattern05_Singleton/cpp_src3
