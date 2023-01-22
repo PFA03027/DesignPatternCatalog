@@ -1,12 +1,17 @@
 SUBDIRS += CreationPattern01_AbstractFactory/cpp_src
 SUBDIRS += CreationPattern01_AbstractFactory/rust_src
 SUBDIRS += CreationPattern01_AbstractFactory_Practical/cpp_src
+SUBDIRS += CreationPattern02_Builder/cpp_src
 SUBDIRS += CreationPattern03_FactoryMethod/cpp_src
 SUBDIRS += CreationPattern03_FactoryMethod/cpp_src2
 SUBDIRS += CreationPattern03_FactoryMethod/rust_src
 SUBDIRS += CreationPattern05_Singleton/cpp_src
 SUBDIRS += CreationPattern05_Singleton/cpp_src2
+SUBDIRS += CreationPattern05_Singleton/cpp_src3
+SUBDIRS += CreationPattern05_Singleton/cpp_src4
 SUBDIRS += CreationPattern05_Singleton/cpp_srcX
+SUBDIRS += CreationPattern05_Singleton/rust_src
+SUBDIRS += CreationPattern05_Singleton/rust_src2
 SUBDIRS += StructurePattern01_Adapter/cpp_src
 SUBDIRS += StructurePattern01_Adapter/cpp_src2
 SUBDIRS += StructurePattern03_Composite/cpp_src
