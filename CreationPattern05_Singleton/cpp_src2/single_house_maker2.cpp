@@ -1,5 +1,5 @@
 /**
- * @file single_house_maker.cpp
+ * @file single_house_maker2.cpp
  * @author PFA03027@nifty.com
  * @brief singleton pattern sample implementation
  * @version 0.1
@@ -97,7 +97,10 @@ int main( void )
 {
 	auto sp_singleton = house_maker::get_instance();
 	sp_singleton->print_i_am();
+	auto sp_singleton2 = house_maker::get_instance();
+	sp_singleton2->print_i_am();
 	house_maker::release_instance( std::move( sp_singleton ) );
+	house_maker::release_instance( std::move( sp_singleton2 ) );
 
 	std::cout << "end of process" << std::endl;
 	return EXIT_SUCCESS;   // 関数を抜けると、singletonの利用者がなくなるので、解放処理が実行される。

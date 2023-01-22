@@ -98,18 +98,24 @@ https://qiita.com/terakoya76/items/f9e2b0bda491aff19b6f
 ### Singleton
 * C++ での実装(基本): CreationPattern05_Singleton/cpp_src
 * C++ での実装(shared_ptrによる実装): CreationPattern05_Singleton/cpp_src2
+* C++ での実装(外部情報に従って生成するSingletonを決定する実装例): CreationPattern05_Singleton/cpp_src3
+* C++ での実装(cpp_src3に加え、外部情報が決定されるまでSingletonの生成を待機させる実装例): CreationPattern05_Singleton/cpp_src4
 * C++ での実装(DLCによる実装): CreationPattern05_Singleton/cpp_srcX
+* Rust での実装(lazy_staticによる実装例): CreationPattern05_Singleton/rust_src
+* Rust での実装(once_cellによる実装例): CreationPattern05_Singleton/rust_src2
 
 Singletonパターンの今どきの実装です。
 
 Singletonの良い点は、システム上1つしかないリソースへのアクセスを1つのオブジェクトで対応させることを保証できる点です。
-（n個という有限個に制限する場合は、get_instance()の引数でインスタンスを指定する実装で対応できます）
+（n個という有限個に制限する場合であっても、get_instance()の引数でインスタンスを指定する実装で対応できます）
 
 組込みシステムの場合は、ハードリソースは有限個となる場合が多いでしょうから、インスタンス数に制約をかけられる点がなかなかに有用だと思います。
 ほかにもグローバル変数とは異なり、アクセス方法を制限できます。そのため、安全な実装を作りやすい点も良い点です。
 また、グローバルにアクセス可能なリソースでありながら、遅延初期化を実現できる点も、隠れたメリットだと思います。
 
 なお、DLCによる実装は、今どき（C++11以降）の実装ではあまり使用しないと思います。
+
+Rustは、ほぼ写経です。( ﾟДﾟ)
 
 
 ## Classification: Structure
