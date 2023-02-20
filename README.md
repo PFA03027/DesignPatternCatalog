@@ -200,6 +200,25 @@ Adapterパターンは、I/Fを変更することを目的としたパターン�
 
 StructurePattern04_Decorator\rust_srcは、DecoratorのI/Fをトレイトで実装した定石的な実装です。
 
+## Classification: Structure
+### Facade
+* C++ での実装: StructurePattern05_Facade/cpp_src
+
+Bridgeパターンでは、子豚3兄弟のそれぞれの家とそれにまつわるストーリーを別々のクラスとして実装しました。
+その結果、3つのクラスとそれぞれで呼び出すI/Fがそれぞれに定義されることとなりました。
+Facadeパターンでは、Facadeクラスがそれらのクラス群に対するI/Fとして定義され、このような複数のクラスで
+構成されるような実装の詳細をFacadeクラスの後ろに隠すことで、ソフトウェアレイヤー間の結合度を下げるよう
+なデザインパターンです。
+
+このサンプルでは、Bridgeパターンのメイン関数で行っていたオブジェクトの管理などをFacadeクラスの後ろに隠し、
+クラス構成等の実装の詳細をクライアント側から切り離しています。
+
+[補足]
+Facadeパターンはそのパターンの目的から、Singletonパターンを併用する場合も多いですが、このサンプルでは、
+Singletonパターンは適用していません。
+代わりに、pimplイディオムで実装の詳細を隠しています。
+
+
 ## Classification: Behavior
 ### Chain of Responsibility
 * C++ での実装: BehaviorPattern01_ChainOfResponsibility\cpp_src
