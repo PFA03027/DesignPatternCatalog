@@ -1,8 +1,8 @@
 # Design Pattern Implementation Catalog
  This is Design Pattern Implementation Catalog and my understanding and opinion for use
  
-## Classification: Creation
-### Abstract Factory
+## Abstract Factory
+### Classification: Creation
 * C++ での実装: CreationPattern01_AbstractFactory/cpp_src
 * Rust での実装: CreationPattern01_AbstractFactory/rust_src
 
@@ -74,8 +74,8 @@ Windowシステムが用意する部品レベル（ボタンやリストボッ�
 とはいえ、依存するシステムの入れ替わりとともに人を入れ替えることも可能になるのではないでしょうか。
 
 
-## Classification: Creation
-### Builder
+## Builder
+### Classification: Creation
 * C++ での実装: CreationPattern02_Builder/cpp_src
 
 Builder Patternは、あまり使用したことがありません。
@@ -85,8 +85,8 @@ Builder Patternは、あまり使用したことがありません。
 可換にする必要がある場合に適用できるデザインパターンです。
 
 
-## Classification: Creation
-### Factory Method
+## Factory Method
+### Classification: Creation
 * C++ での実装: CreationPattern03_FactoryMethod/cpp_src
 * C++ での実装(ラムダ式方式): CreationPattern03_FactoryMethod/cpp_src2
 * Rust での実装: CreationPattern03_FactoryMethod/rust_src
@@ -104,15 +104,15 @@ CreationPattern03_FactoryMethod/cpp_srcは、デザインパターン本でも�
 https://qiita.com/terakoya76/items/f9e2b0bda491aff19b6f
 
 
-## Classification: Creation
-### Prototype
+## Prototype
+### Classification: Creation
 * C++ での実装: CreationPattern04_Prototype/cpp_src
 
 Prototypeパターンは使ったことがないので、コメントが難しいです。
 多くのオブジェクトを動的に生成する場合や、ユーザーが定義したプロトタイプオブジェクトを複製する場合に適用しやすいようです。
 
-## Classification: Creation
-### Singleton
+## Singleton
+### Classification: Creation
 * C++ での実装(基本): CreationPattern05_Singleton/cpp_src
 * C++ での実装(shared_ptrによる実装): CreationPattern05_Singleton/cpp_src2
 * C++ での実装(外部情報に従って生成するSingletonを決定する実装例): CreationPattern05_Singleton/cpp_src3
@@ -135,8 +135,8 @@ Singletonの良い点は、システム上1つしかないリソースへのア�
 Rustは、ほぼ写経です。( ﾟДﾟ)
 
 
-## Classification: Structure
-### Adapter
+## Adapter
+### Classification: Structure
 * C++ での実装(コンポジットタイプ): StructurePattern01_Adapter\cpp_src
 * C++ での実装(多重継承タイプ): StructurePattern01_Adapter\cpp_src2
 * Rust での実装: StructurePattern01_Adapter\rust_src
@@ -152,8 +152,8 @@ Adapterパターンの大事なポイントは、既存のクラスには手を�
 もしAdapteeクラスがFactory系の場合は、実質的にFactory Methodパターンになります。この場合、生成されるオブジェクトにもAdapterを適用する必要があるでしょう。
 
 
-## Classification: Structure
-### Bridge
+## Bridge
+### Classification: Structure
 * C++ での実装: StructurePattern02_Bridge/cpp_src
 
 クラスとその派生クラスの実装を（主に動的に）切り替える場合に適用する候補となるパターンです。
@@ -165,8 +165,8 @@ Adapterパターンは、既存のクラスと無関係のクラスを結びつ�
 一方、Bridgeパターンは、抽象化されたクラスと実装を設計に分離し、またそれらを結び付けるのも設計時に行われ、適用されるパターンです。
 
 
-## Classification: Structure
-### Composite
+## Composite
+### Classification: Structure
 * C++ での実装(共通的操作を仮想メンバ関数による実装例): StructurePattern03_Composite\cpp_src
 * C++ での実装(共通的操作をVisitorパターンで実装した例): StructurePattern03_Composite\cpp_src2
 * C++ での実装(共通的操作をVisitorパターンとdynamic_castで実装した例): StructurePattern03_Composite\cpp_src3
@@ -188,8 +188,8 @@ StructurePattern03_Composite\rust_src2は、上記に加えて子のインスタ
 子を保持するコレクションに依存しないようしました。
 この際、コレクションの生存期間をIteratorオブジェクトの生存期間と同じにする必要があり、lifetimeの情報を追加しています。
 
-## Classification: Structure
-### Decorator
+## Decorator
+### Classification: Structure
 * C++ での実装: StructurePattern04_Decorator\cpp_src
 * Rust での実装: StructurePattern04_Decorator\rust_src
 
@@ -200,8 +200,8 @@ Adapterパターンは、I/Fを変更することを目的としたパターン�
 
 StructurePattern04_Decorator\rust_srcは、DecoratorのI/Fをトレイトで実装した定石的な実装です。
 
-## Classification: Structure
-### Facade
+## Facade
+### Classification: Structure
 * C++ での実装: StructurePattern05_Facade/cpp_src
 
 Bridgeパターンでは、子豚3兄弟のそれぞれの家とそれにまつわるストーリーを別々のクラスとして実装しました。
@@ -219,8 +219,8 @@ Singletonパターンは適用していません。
 代わりに、pimplイディオムで実装の詳細を隠しています。
 
 
-## Classification: Behavior
-### Chain of Responsibility
+## Chain of Responsibility
+### Classification: Behavior
 * C++ での実装: BehaviorPattern01_ChainOfResponsibility\cpp_src
 
 要求を処理する可能性のあるオブジェクトを数珠繋ぎにして、要求を処理するパターンです。
@@ -230,8 +230,8 @@ Singletonパターンは適用していません。
 このパターンは、要求を発行する側と、要求を処理する側が１対多のような場合に適用される場合が多いと思います。
 特に、要求を処理する側は自身のオブジェクトの観点のみからｋ、ｌｋｌｋｋｋ要求処理の要否を考えるだけでよいため、オブジェクト間の結合度を低くできます。
 
-## Classification: Behavior
-### Observer
+## Observer
+### Classification: Behavior
 * C++ での実装: BehaviorPattern07_Observer\cpp_src
 * Rust での実装: BehaviorPattern07_Observer\rust_src
 * Rust での実装(メッセージによる実装): BehaviorPattern07_Observer\rust_src2
@@ -412,8 +412,8 @@ classDiagram
     main "1" --> "*" thread02: 複数のObserver
 ```
 
-## Classification: Behavior
-### Strategy
+## Strategy
+### Classification: Behavior
 * C++ での実装(Strategyを隠蔽する実装): BehaviorPattern09_Strategy\cpp_src
 * C++ での実装(Strategyを利用者側が提供する実装): BehaviorPattern09_Strategy\cpp_src2
 * C++ での実装(Strategyを利用者側がlambda関数で提供する実装): BehaviorPattern09_Strategy\cpp_src3
@@ -427,15 +427,15 @@ ConcreteStrategyクラスに状態を持たせないよう、状態に依存す�
 
 また、cpp_src2の実装例のように、利用者側がConcreteStrategyを提供する場合、Abstract Factoryパターンとの組み合わせて使う状況も考えられるでしょう。
 
-## Classification: Behavior
-### State
+## State
+### Classification: Behavior
 * C++ での実装(Stateを隠蔽する実装): BehaviorPattern08_State\cpp_src
 
 状態によって、振る舞いを変更する事ができるStateパターンです。
 
 
-## Classification: Behavior
-### Template Method
+## Template Method
+### Classification: Behavior
 * C++ での実装: BehaviorPattern10_TemplateMethod\cpp_src
 * Rust での実装: BehaviorPattern10_TemplateMethod\rust_src
 
