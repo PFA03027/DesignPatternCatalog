@@ -24,6 +24,7 @@ SUBDIRS += StructurePattern03_Composite/rust_src2
 SUBDIRS += StructurePattern04_Decorator/cpp_src
 SUBDIRS += StructurePattern04_Decorator/rust_src
 SUBDIRS += StructurePattern05_Facade/cpp_src
+SUBDIRS += StructurePattern07_Proxy/cpp_src
 SUBDIRS += BehaviorPattern01_ChainOfResponsibility/cpp_src
 SUBDIRS += BehaviorPattern01_ChainOfResponsibility/cpp_src2
 SUBDIRS += BehaviorPattern01_ChainOfResponsibility/cpp_src3
